@@ -11,7 +11,7 @@ Modify and use the following command to build the Jaeger UI frontend, and push t
 ```sh
 export RELEASE_TAG=v0.0.1
 export FRONTEND_IMAGE_NAME=gcr.io/solo-public/docs/solo-jaeger-ui-frontend
-docker build -f ./Dockerfile -t "${FRONTEND_IMAGE_NAME}:latest" -t "${FRONTEND_IMAGE_NAME}:${RELEASE_TAG}" . && \
+docker build -f ./solo-resources/docker/Dockerfile -t "${FRONTEND_IMAGE_NAME}:latest" -t "${FRONTEND_IMAGE_NAME}:${RELEASE_TAG}" . && \
 docker push "${FRONTEND_IMAGE_NAME}:latest" && \
 docker push "${FRONTEND_IMAGE_NAME}:${RELEASE_TAG}"
 ```
@@ -28,7 +28,7 @@ cat ./solo-resources/kubernetes/solo_jaeger_ui_frontend_deployment.yaml | envsub
 Then, when the deployment is ready, we can port-forward it to view the jaeger-ui. Note that the backend must be applied separately for the frontend to receive data.
 
 ```sh
-k port-forward -n apps deploy/solo-jaeger-ui-frontend 8088:8080
+k port-forward -n apps deploy/solo-jaeger-ui-frontend 8088:4000
 ```
 
 _As we come up with a way to serve Jaeger UI backend, these deployment steps may change._

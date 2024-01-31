@@ -1,7 +1,7 @@
 <h1 align="center">Jaeger UI - Solo.io Fork</h1>
 
 <p align="center">
-  The Solo.io fork of Jaeger UI is themed and customized to work with our products. For more documentation, see `./solo-resources/README.md`. For the original Jaeger UI readme, see below.
+  The Solo.io fork of Jaeger UI is themed and customized to work with our products. For more documentation, see `./packages/jaeger-ui/solo-resources/README.md`. For the original Jaeger UI readme, see below.
 </p>
 
 ---
