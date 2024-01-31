@@ -111,7 +111,7 @@ const itemsGlobalLeft: MenuProps['items'] = [
   {
     label: (
       <Link to={prefixUrl('/')} style={{ fontSize: '14px', fontWeight: 500 }}>
-        JAEGER UI
+        SOLO JAEGER UI
       </Link>
     ),
     key: 'JAEGER UI',

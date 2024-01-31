@@ -1,3 +1,11 @@
+<h1 align="center">Jaeger UI - Solo.io Fork</h1>
+
+<p align="center">
+  The Solo.io fork of Jaeger UI is themed and customized to work with our products. For more documentation, see `./solo-resources/README.md`. For the original Jaeger UI readme, see below.
+</p>
+
+---
+
 [![Build Status][ci-img]][ci] [![Coverage Status][cov-img]][cov] [![FOSSA Status][fossa-img]][fossa] [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/jaegertracing/jaeger-ui/badge)](https://securityscorecards.dev/viewer/?uri=github.com/jaegertracing/jaeger-ui)
 
 # Jaeger UI
