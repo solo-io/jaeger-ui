@@ -28,7 +28,7 @@ cat ./solo-resources/kubernetes/solo_jaeger_ui_frontend_deployment.yaml | envsub
 Then, when the deployment is ready, we can port-forward it to view the jaeger-ui. Note that the backend must be applied separately for the frontend to receive data.
 
 ```sh
-k port-forward -n apps deploy/solo-jaeger-ui-frontend 8088:4000
+k port-forward -n apps deploy/solo-jaeger-ui-frontend 8088:8080
 ```
 
 _As we come up with a way to serve Jaeger UI backend, these deployment steps may change._
