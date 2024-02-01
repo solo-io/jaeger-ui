@@ -21,7 +21,8 @@ import { visualizer } from 'rollup-plugin-visualizer';
 import path from 'path';
 
 const proxyConfig = {
-  target: 'http://localhost:16686',
+  // target: 'http://localhost:16686',
+  target: 'http://localhost:8090/tracing-ui',
   secure: false,
   changeOrigin: true,
   ws: true,

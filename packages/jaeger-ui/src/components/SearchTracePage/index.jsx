@@ -147,14 +147,14 @@ export class SearchTracePageImpl extends Component {
               rawTraces={traceResultsToDownload}
             />
           )}
-          {showLogo && (
+          {/* {showLogo && (
             <img
               className="SearchTracePage--logo js-test-logo"
               alt="presentation"
               src={JaegerLogo}
               width="400"
             />
-          )}
+          )} */}
         </Col>
       </Row>
     );
