@@ -41,7 +41,7 @@ jobs:
             # Else, we need to update it (this assumes no conflicts).
             echo "Branch $RELEASE_BRANCH exists, so it will be updated."
             git checkout $RELEASE_BRANCH
-            git pull origin main -X theirs
+            git pull origin main -X theirs --allow-unrelated-histories
             git push $RELEASE_BRANCH 
           fi
 
