@@ -40,7 +40,7 @@ jobs:
             # Else, we need to update it (this assumes no conflicts).
             echo "Branch $RELEASE_BRANCH exists, so it will be updated."
             git checkout $RELEASE_BRANCH
-            git pull origin main
+            git pull origin main --ff-only
             git push $RELEASE_BRANCH 
           fi
 
