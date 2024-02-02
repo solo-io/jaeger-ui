@@ -31,7 +31,7 @@ jobs:
           RELEASE_BRANCH=$(echo $RELEASE_TAG | sed 's|\.[0-9]*$|\.x|g')
           # Fetch and check if the release branch exists  
           git fetch --prune
-          if [ $(git branch -r | grep -c $RELEASE_BRANCH | wc -l) -eq 0 ]; then
+          if [ $(git ls-remote origin --heads $RELEASE_BRANCH | wc -l) -eq 0 ]; then
             # If so, we just need to checkout and push to it.
             echo "Branch $RELEASE_BRANCH does not exist, so it will be created."
             git checkout -b $RELEASE_BRANCH
