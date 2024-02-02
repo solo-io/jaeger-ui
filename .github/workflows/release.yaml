@@ -25,12 +25,13 @@ jobs:
           git config user.name $GIT_USER_NAME
           git config user.email $GIT_USER_EMAIL
           git config --global url."https://${GH_TOKEN}@github.com/solo-io/".insteadOf "https://github.com/solo-io/"
+          git config --global pull.rebase true
+          git fetch --prune
 
       - name: Create/update release branch
         run: |
           RELEASE_BRANCH=$(echo $RELEASE_TAG | sed 's|\.[0-9]*$|\.x|g')
-          # Fetch and check if the release branch exists.
-          git fetch --prune
+          # Check if the release branch exists.
           if [ $(git ls-remote origin --heads $RELEASE_BRANCH | wc -l) -eq 0 ]; then
             # If so, we just need to checkout and push to it.
             echo "Branch $RELEASE_BRANCH does not exist, so it will be created."
@@ -40,7 +41,7 @@ jobs:
             # Else, we need to update it (this assumes no conflicts).
             echo "Branch $RELEASE_BRANCH exists, so it will be updated."
             git checkout $RELEASE_BRANCH
-            git pull origin main --ff-only
+            git pull origin main -X theirs
             git push $RELEASE_BRANCH 
           fi
 
