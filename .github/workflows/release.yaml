@@ -32,11 +32,14 @@ jobs:
           # Check if the release branch exists  
           if [ $(git branch -r | cat | grep -c $RELEASE_BRANCH) -eq 0 ]; then
             # If so, we just need to checkout and push to it
+            echo "Branch $RELEASE_BRANCH does not exist, so it will be created."
             git checkout -b $RELEASE_BRANCH
             git push --set-upstream origin $RELEASE_BRANCH 
           else
             # Else, we need to update it (this assumes no conflicts)
+            echo "Branch $RELEASE_BRANCH exists, so it will be updated."
             git checkout origin $RELEASE_BRANCH
+            git pull
             git pull origin main
             git push $RELEASE_BRANCH 
           fi
