@@ -26,12 +26,20 @@ jobs:
           git config user.email $GIT_USER_EMAIL
           git config --global url."https://${GH_TOKEN}@github.com/solo-io/".insteadOf "https://github.com/solo-io/"
 
-      # TODO-FIX: This creates and pushes the initial branch but doesn't work if the branch exists.
-      - name: Create release branch
+      - name: Create/update release branch
         run: |
           RELEASE_BRANCH=$(echo $RELEASE_TAG | sed 's|\.[0-9]*$|\.x|g')
-          git checkout -b $RELEASE_BRANCH || true
-          git push origin $RELEASE_BRANCH || true
+          # Check if the release branch exists  
+          if [ $(git branch -r | cat | grep -c $RELEASE_BRANCH) -eq 0 ]; then
+            # If so, we just need to checkout and push to it
+            git checkout -b $RELEASE_BRANCH
+            git push --set-upstream origin $RELEASE_BRANCH 
+          else
+            # Else, we need to update it (this assumes no conflicts)
+            git checkout origin $RELEASE_BRANCH
+            git pull origin main
+            git push $RELEASE_BRANCH 
+          fi
 
       #
       # GCR Image
